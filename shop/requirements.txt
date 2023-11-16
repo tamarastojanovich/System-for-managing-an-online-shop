@@ -1,0 +1,12 @@
+PyMySQL
+cryptography==41.0.1
+flask
+flask-sqlalchemy==3.0.5
+sqlalchemy==2.0.17
+flask_migrate==4.0.4
+flask_script==2.0.6
+sqlalchemy_utils==0.41.1
+flask_jwt_extended==4.5.2
+mysqlclient==2.1.1
+web3==6.4.0
+pyjwt

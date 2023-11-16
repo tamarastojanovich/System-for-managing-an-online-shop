@@ -1,0 +1,59 @@
+CREATE DATABASE shopInfo;
+
+USE shopInfo;
+
+CREATE TABLE IF NOT EXISTS products(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    prod VARCHAR(256) NOT NULL UNIQUE,
+    price FLOAT NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE IF NOT EXISTS categories(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    category VARCHAR(256) NOT NULL UNIQUE,
+    PRIMARY KEY(id)
+);
+CREATE TABLE IF NOT EXISTS orders(
+    orderId INTEGER NOT NULL AUTO_INCREMENT,
+    price FLOAT NOT NULL,
+    status VARCHAR(256) NOT NULL,
+    created VARCHAR(256) NOT NULL,
+    owner VARCHAR(256) NOT NULL,
+    address VARCHAR(256) NOT NULL,
+    PRIMARY KEY(orderId)
+);
+CREATE TABLE IF NOT EXISTS productCategory(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    prod VARCHAR(256) NOT NULL,
+    category VARCHAR(256) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE productCategory
+ADD CONSTRAINT fk_prod
+FOREIGN KEY (prod)
+REFERENCES products (prod);
+
+ALTER TABLE productCategory
+ADD CONSTRAINT fk_cat
+FOREIGN KEY (category)
+REFERENCES categories (category);
+
+
+CREATE TABLE IF NOT EXISTS orderPro(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    orderId INTEGER NOT NULL,
+    prod VARCHAR(256) NOT NULL,
+    quantity INTEGER NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE orderPro
+ADD CONSTRAINT fk_prodd
+FOREIGN KEY (prod)
+REFERENCES products (prod);
+
+ALTER TABLE orderPro
+ADD CONSTRAINT fk_ord
+FOREIGN KEY (orderId)
+REFERENCES orders (orderId);
